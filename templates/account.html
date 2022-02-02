@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Password Manager</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet"> 
+    <!-- Bootstrap theme -->
+    <link href="{{ url_for('static', filename='css/bootstrap-theme.min.css') }}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{{ url_for('static', filename='css/sign.css') }}" rel="stylesheet">
+
+    <!-- Jquery and Ajax link -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+  </head>
+
+  <body>
+
+    <div style ="display: flex;">
+    <form class="form-signin-heading" action="/signout">
+      <button class="btn btn-lg btn-block" type="submit">Sign Out</button>
+    </form>
+    &nbsp;
+    &nbsp;
+    <form class="form-signin-heading">
+      <a type ="button" class="btn btn-lg btn-block" href="{{ url_for('index.index')}}"> Go to Homepage </a>
+    </form>
+    &nbsp;
+    &nbsp;
+    <form class="form-signin-heading">
+      <a type ="button" class="btn btn-lg btn-block" href="{{ url_for('account.create')}}"> Create Entry </a>
+    </form>
+    &nbsp;
+    &nbsp;
+    <form style="display: flex;" method="post" action="/search">
+      <input name="Search" placeholder="Search by Name" type="text" class="form-control">
+      &nbsp;
+      &nbsp;
+      <input type="submit" id="inputName" class="form-control">
+    </form>
+  </div>
+    <table class = "table">
+      <thead>
+        <tr>
+          <th style="border-bottom: none" class="row-md-1"> Name </th>
+          <th style="border-bottom: none" class="row-md-2"> URL </th>  
+          <th style="border-bottom: none" class="row-md-2"> Username </th>
+          <th style="border-bottom: none" class="row-md-3">Actions</th>
+          <!--<th scope="col"> Password</th>-->
+        </tr>
+      </thead>
+      <tbody>
+        {% for entry in dbQuery %}
+        <tr>
+          <td> <a type="text" href="{{ url_for('account.viewEntry', id=entry[0]) }}">{{ entry[1] }}</a> </td>
+          <td><a type="text" href="{{ url_for('account.viewEntry', id=entry[0]) }}">{{ entry[2] }}</a></td> 
+          <td><a type="text" href="{{ url_for('account.viewEntry', id=entry[0]) }}">{{ entry[3] }}</a></td>
+          <td> <a type="button" class="btn btn-lg btn-block" href="{{ url_for('account.viewEntry', id=entry[0]) }}">SELECT</a></td>
+          <td> <a type="button" class="btn btn-lg btn-block" href="{{ url_for('account.deleteEntry', id=entry[0]) }}">DELETE</a></td>
+        </tr>
+        {%  endfor %}
+      </tbody>
+    </table>
+    <form class="form-signin" action="/signout">
+      <button class="btn btn-lg btn-block" type="submit">Sign Out</button>
+    </form>
+    <form class="form-signin">
+    <a type ="button" class="btn btn-lg btn-block" href="{{ url_for('index.index')}}"> Go to Homepage </a>
+    </form>
+  </body>
+</html>

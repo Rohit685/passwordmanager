@@ -1,0 +1,89 @@
+body {
+  background-color: #202023;
+}
+.table{
+  background-color: #202023 ;
+  color: #E5D7D4;
+  font-weight: bolder;
+  border-collapse: separate;
+  border-spacing: 10px;
+}
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th{
+    padding-bottom: 5px;
+    padding-top: 8px;
+    padding-right: 3px;
+    padding-left: 3px;
+}
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+  margin-bottom: 10px;
+  color: #e0e0e1;
+}
+.form-signin .checkbox {
+  font-weight: normal;
+}
+.form-signin .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+p {
+  text-align: center;
+  text-decoration-line: none;
+  font-size: 15px;
+  color: #E5D7D4;
+}
+
+#hideMe {
+    -webkit-animation: cssAnimation 5s forwards; 
+    animation: cssAnimation 5s forwards;
+    color: #E5D7D4;
+}
+@keyframes cssAnimation {
+    0%   {opacity: 1;}
+    100% {opacity: 0;}
+}
+@webkit-keyframes cssAnimation {
+    0%   {opacity: 1;}
+    100% {opacity: 0;}
+}
+
+#inputName {
+  font-weight: bolder;
+}
+
+
+.btn.btn-lg.btn-block{
+  background-color: #8b674e;
+  color: #E5D7D4;
+  margin: 0px;
+  padding: 3px;
+  margin-left: 5px;
+}
+
+a, a:hover{
+  color: #E5D7D4;
+}

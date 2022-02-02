@@ -1,0 +1,32 @@
+body {
+  padding-top: 70px;
+  padding-bottom: 30px;
+  background-color: #202023;
+}
+
+.theme-dropdown .dropdown-menu {
+  position: static;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.theme-showcase > p > .btn {
+  margin: 5px 0;
+}
+
+.theme-showcase .navbar .container {
+  width: auto;
+}
+
+.jumbotron{
+    background-color: #202023;
+    color: white;
+    text-align: center;
+    width: 90%;
+}
+.btn.btn-lg.btn-block{
+  background-color: #8b674e;
+  color: #E5D7D4;
+  padding: 2px;
+  margin: 6px;
+}

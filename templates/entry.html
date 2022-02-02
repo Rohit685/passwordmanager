@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>An Entry</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{{ url_for('static', filename='css/sign.css') }}" rel="stylesheet">
+  </head>
+
+  <body>
+            {%with messages = get_flashed_messages()%}
+          {% if messages%}
+            {% for msg in messages %}
+              <p id = 'hideMe'>{{msg}}</p>
+            {%endfor%}
+          {%endif%}
+        {%endwith%}  
+    <div class="container">
+      <form class="form-signin" method="post" action="/edit">
+        <div class="form-group">
+          <h2 class="form-signin-heading"> Id</h2>
+          <label for="Id" class="sr-only"> Id</label>
+          <input name="Id" value="{{data.0}}" type="text" id="inputName" class="form-control" readonly>
+        </div>
+
+        <div class="form-group">
+          <h2 class="form-signin-heading">Name</h2>
+          <label for="inputName" class="sr-only">Name</label>
+          <input name="Name" value="{{data.1}}" type="text" id="inputName" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+          <h2 class="form-signin-heading">URL</h2>
+          <label for="inputURL" class="sr-only">URL</label>
+          <input name="URL" value = "{{data.2}}" type="text" id="inputName" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+          <h2 class="form-signin-heading">Username</h2>
+          <label for="inputUsername" class="sr-only">Username</label>
+          <input name="Username" value="{{data.3}}" type="text" id="inputName" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+          <h2 class="form-signin-heading">Password</h2>
+          <label for="inputPassword" class="sr-only">Password</label>
+          <input name="Password" value="{{data.4}}" type="text" id="inputName" class="form-control" required>
+        </div>
+        <div style ="display: flex;">
+          <button class="btn btn-lg btn-block" type="submit">Save</button>
+          <form class="form-signin">
+            <a type="button" class="btn btn-lg btn-block" href="{{ url_for('account.deleteEntry', id=data.0) }}">Delete</a>
+          </form>
+        </div>
+      </form>      
+    </div> <!-- /container -->
+
+  </body>
