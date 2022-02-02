@@ -183,27 +183,27 @@ def id_generator(ipt):
 	special_chars = '!@#$%^&*()?' 
 	char_set = string.ascii_uppercase + string.digits + string.ascii_lowercase + special_chars 
 	return ''.join(random.sample(char_set*6, ipt))
-print("Welcome To Password Manager")
-cmdVersion = input("Do you want to continue to CMD version: ")
-if(cmdVersion.lower() == 'n'):
-	exit = True
-else:
-	exit = False
-while True:
-	if exit == True:
-		break
-	if signIn() == True:
-		print("Login Successful")
-		print("Controls are as follows: ","\n", "A to Add, S to search, D to delete, U to Update, G to generate password, and Q to quit")	
-		break
-	else:
-		print("Please try again")
-while True:
-	if exit == True:
-		break
-	x = processPrefix()
-	if(x == False):
-		print("Thanks for using Password Manager")
-		break;
+#print("Welcome To Password Manager")
+#cmdVersion = input("Do you want to continue to CMD version: ")
+#if(cmdVersion.lower() == 'n'):
+#	exit = True
+#else:
+#	exit = False
+#while True:
+#	if exit == True:
+#		break
+#	if signIn() == True:
+#		print("Login Successful")
+#		print("Controls are as follows: ","\n", "A to Add, S to search, D to delete, U to Update, G to generate password, and Q to quit")	
+#		break
+#	else:
+#		print("Please try again")
+#while True:
+#	if exit == True:
+#		break
+#	x = processPrefix()
+#	if(x == False):
+#		print("Thanks for using Password Manager")
+#		break;
 
 
