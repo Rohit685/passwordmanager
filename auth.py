@@ -2,7 +2,7 @@ from flask import Blueprint, render_template,request,flash,session, url_for, g, 
 from main import hashPassword
 from conn import *
 from functools import wraps
-from random import choice
+from random import *
 import string
 
 bp = Blueprint("auth", __name__)
@@ -47,7 +47,7 @@ def createUser():
 	password = request.form['password']
 	hashedPass = hashPassword(password)
 	digits = string.digits
-	userID = ''.join(choice(digits)for _ in range(random.randint(4,10)))
+	userID = ''.join(choice(digits)for _ in range(randrange(4,10)))
 	with get_db() as conn:
 		try:
 			cursor = conn.cursor()
