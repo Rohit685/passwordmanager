@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Sign In</title>
+    <title>Sign Up</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
@@ -27,8 +27,8 @@
             {%endfor%}
           {%endif%}
         {%endwith%}  
-      <form class="form-signin" method="post" action="/process">
-        <h2 class="form-signin-heading">Sign in to the password manager</h2>
+      <form class="form-signin" method="post" action="/createUser">
+        <h2 class="form-signin-heading">Sign Up</h2>
         &nbsp
         <div class="form-group">
           <h2 class="form-signin-heading">Username</h2>
@@ -39,8 +39,8 @@
           <h2 class="form-signin-heading">Password</h2>
           <label for="inputPassword" class="sr-only">Password</label>
           <input name="password" type="password" id="inputName" class="form-control" placeholder="1234" required>
-        <button class="btn btn-lg btn-block" type="submit">Sign In</button>
         </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign Up</button>
       </form>
 
     </div> <!-- /container -->

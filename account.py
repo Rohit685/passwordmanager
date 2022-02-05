@@ -13,7 +13,10 @@ bp = Blueprint("account", __name__)
 def index():
 	with get_db() as conn:
 		cursor = conn.cursor()
-		result = cursor.execute('SELECT * FROM passwords')
+		if 'user' in session:
+			currentUserID = session.get('user')
+		query = 'SELECT * FROM passwords WHERE userID = ?'
+		result = cursor.execute(query, (currentUserID, ))
 		data = result.fetchall()
 		return render_template("account.html", dbQuery=data)
 
@@ -22,8 +25,10 @@ def index():
 def viewEntry(id):
 	with get_db() as conn:
 		cursor = conn.cursor()
-		query = 'SELECT * FROM passwords WHERE id = ?'
-		result = cursor.execute(query, (id,))
+		if 'user' in session:
+			currentUserID = session.get('user')
+		query = 'SELECT * FROM passwords WHERE id = ? AND userID = ?'
+		result = cursor.execute(query, (id,currentUserID, ))
 		data = result.fetchall()
 		mylist = []
 		for entry in data:
@@ -50,8 +55,10 @@ def edit():
 	with get_db() as conn:
 		try:
 			cursor = conn.cursor()
-			query = "UPDATE PASSWORDS SET Name = ?, URL = ?, Username = ?, Password = ? WHERE id = ?"
-			cursor.execute(query,(Name,URL,Username,encryptedPassword,Id))
+			if 'user' in session:
+				currentUserID = session.get('user')
+			query = "UPDATE PASSWORDS SET Name = ?, URL = ?, Username = ?, Password = ? WHERE id = ? AND userID = ?"
+			cursor.execute(query,(Name,URL,Username,encryptedPassword,Id, currentUserID, ))
 			conn.commit()
 		except sqlite3.Error as error:
 			flash("Database Query unsuccessful")
@@ -63,8 +70,10 @@ def deleteEntry(id):
 	with get_db() as conn:
 		try:
 			cursor = conn.cursor()
-			query = 'DELETE FROM passwords WHERE id = ?'
-			cursor.execute(query, (id,))
+			if 'user' in session:
+				currentUserID = session.get('user')
+			query = 'DELETE FROM passwords WHERE id = ? AND userID = ?'
+			cursor.execute(query, (id, currentUserID, ))
 			conn.commit()
 		except sqlite3.Error as error:
 			return "db query unsuccessful"
@@ -78,11 +87,13 @@ def createEntry():
 	Username = request.form['Username']
 	decryptedPassword = request.form['Password']
 	encryptedPassword = cryptocode.encrypt(decryptedPassword, passcode)
+	if 'user' in session:
+			currentUserID = session.get('user')
 	with get_db() as conn:
 		try:
 			cursor = conn.cursor()
-			query = 'INSERT INTO passwords(Name, URL,Username,Password) VALUES(?, ?, ?, ?)'
-			cursor.execute(query,(Name,URL,Username,encryptedPassword, ))
+			query = 'INSERT INTO passwords(Name, URL,Username,Password, userID) VALUES(?, ?, ?, ?,?)'
+			cursor.execute(query,(Name,URL,Username,encryptedPassword,currentUserID, ))
 			conn.commit()
 		except sqlite3.Error as error:
 			flash("Database Query unsuccessful")
@@ -103,7 +114,10 @@ def searchEntry():
 	search = request.form['Search']
 	with get_db() as conn:
 		cursor = conn.cursor()
-		query = 'SELECT * FROM PASSWORDS WHERE Name LIKE ?'
-		result = cursor.execute(query, ["%"+search+"%"])
+		if 'user' in session:
+			currentUserID = session.get('user')
+		query = 'SELECT * FROM PASSWORDS WHERE Name LIKE ? AND userID = ?'
+		likeParam = "%"+search+"%"
+		result = cursor.execute(query, (likeParam, currentUserID, ))
 		data = result.fetchall()
 		return render_template("search.html", dbQuery=data)
