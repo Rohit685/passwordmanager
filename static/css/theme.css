@@ -22,12 +22,12 @@ body {
     background-color: #202023;
     color: white;
     text-align: center;
-    width: 90%;
 }
 .btn.btn-lg.btn-block{
   background-color: #8b674e;
   color: #E5D7D4;
-  padding: 2px;
-  margin: 6px;
+  padding: 6px;
+  margin: 6px auto;
   display: inline-block;
+  width: 40%;
 }

@@ -86,3 +86,8 @@ p {
 a, a:hover{
   color: #E5D7D4;
 }
+
+label, li, h5{
+  color: #E5D7D4;
+}
+
