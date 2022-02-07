@@ -31,3 +31,9 @@ body {
   display: inline-block;
   width: 40%;
 }
+
+h5{
+  color: #E5D7D4;
+  font-style: italic;
+  font-size: 13px;
+}
