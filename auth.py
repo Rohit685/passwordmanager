@@ -55,7 +55,7 @@ def createUser():
 			cursor.execute(query,(userID, username, hashedPass))
 			conn.commit()
 		except sqlite3.Error as error:
-			flash("Username/Password already exists")
+			flash("Error. Please try again")
 			return redirect(url_for('auth.createUserForm'))
 		return redirect(url_for('auth.sign'))
 @bp.route('/createUserForm')
