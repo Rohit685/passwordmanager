@@ -31,6 +31,15 @@ body {
   display: inline-block;
   width: 48%;
 }
+.btn.btn-lg.btn-block.bigger{
+  background-color: #8b674e;
+  color: #E5D7D4;
+  padding: 6px;
+  margin: 6px auto;
+  display: inline-block;
+  width: 55%;
+}
+
 
 h5{
   color: #E5D7D4;
