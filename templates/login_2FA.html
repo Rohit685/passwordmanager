@@ -1,0 +1,56 @@
+<<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2FA</title>
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="{{ url_for('static', filename='css/sign.css') }}" rel="stylesheet">
+</head>
+<body>
+
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-12">
+        <div class="jumbotron text-center p-4">
+          <h2 class = "jumbotron">2FA</h2>
+        </div>
+      </div>
+      <div class="col-lg-5">
+        <form>
+          <div>
+            <h5>Instructions!</h5>
+            <ul>
+            <li>Download Google Authenticator on your phone.</li> 
+            <li> Click the plus icon on the bottom right </li>
+            <li> Click scan QR code and scan the QR code below! </li>
+          </ul>
+        </div>
+      </form>
+    </div>
+      <div class="col-lg-7">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for category, message in messages %}
+        <div class="alert alert-{{ category }}" role="alert">
+          {{ message }}
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+        <form method="POST" action="/sign/2fa/process">
+          <div class="form-group">
+            <label for="otp">Generated OTP</label>
+            <input type="hidden" name="secret" value="{{ secret }}" required>
+            <input type="number" class="form-control" id="otp" name="otp" required>
+          </div>
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary">Authenticate User</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -6,13 +6,13 @@ import stdiomask
 import string
 import cryptocode
 #from pathlib import Path
-try:
-	file = open("config.py", 'x')
-	file = open("config.py", 'a')
-	file.write("passcode = \"insert_password\"  #Enter your hashed password. You can use the hashPassword function to help you")
-	file.close()
-except:
-	print("Found config file.")
+#try:
+#	file = open("config.py", 'x')
+#	file = open("config.py", 'a')
+#	file.write("passcode = \"insert_password\"  #Enter your hashed password. You can use the hashPassword function to help you")
+#	file.close()
+#except:
+#	print("Found config file.")
 
 from config import passcode	
 db = sqlite3.connect('passwords.db')

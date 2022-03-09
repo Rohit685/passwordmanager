@@ -10,6 +10,7 @@
 
     <title>Password Manager</title>
 
+
     <!-- Bootstrap core CSS -->
     <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet"> 
     <!-- Bootstrap theme -->
@@ -21,16 +22,20 @@
   </head>
 
   <body>
-
     <div class="container theme-showcase" role="main">
 
       <div class="jumbotron">
-        <h1>Password Manager</h1>
+        <h1><a href="{{url_for('index.rickroll')}}">Password Manager</a></h1>
         <p>Password Manager made by Rohit M</p>
         <a type="button" class="btn btn-lg btn-block" href="{{ url_for('auth.sign') }}">Login</a>
         <a type ="button" class="btn btn-lg btn-block" href="{{ url_for('auth.createUserForm')}}"> Sign Up </a>
-        <a type ="button" class="btn btn-lg btn-block" href="{{ url_for('account.index')}}"> Go to your database </a>
+        <a type ="button" class="btn btn-lg btn-block bigger" href="{{ url_for('account.index')}}"> Go to your database </a>
       </div>
     </div> <!-- /container -->
+
+
 </body>
+<footer>
+      <h5> Disclaimer: This was just a fun project so I could learn Flask. Please use at your own caution! Thanks! </h5>
+</footer>
 </html>

@@ -91,3 +91,8 @@ label, li, h5{
   color: #E5D7D4;
 }
 
+.jumbotron{
+    background-color: #202023;
+    color: white;
+    text-align: center;
+}
