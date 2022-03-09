@@ -17,6 +17,20 @@
           <h2 class = "jumbotron">2FA</h2>
         </div>
       </div>
+      <div class="col-lg-5">
+        <form>
+          <div>
+            <h5>Instructions!</h5>
+            <ul>
+            <li>Download Google Authenticator on your phone.</li> 
+            <li> Click the plus icon on the bottom right </li>
+            <li> Click scan QR code and scan the QR code below! </li>
+            <li> <img src="{{url_for('static', filename=userImg ) }}" /></li>
+          </ul>
+        </div>
+      </form>
+    </div>
+      <div class="col-lg-7">
         {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
         {% for category, message in messages %}

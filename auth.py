@@ -47,7 +47,7 @@ def process():
                 counter += 1
     session['user'] = mylist[1]
     session.permanent = True
-    return redirect(url_for('auth.sign_2FA'))
+    return redirect(url_for('account.index'))
 
 
 @bp.route('/sign/2fa')
@@ -56,6 +56,7 @@ def sign_2FA():
         return redirect(url_for('auth.sign'))
     else:
         currentUserID = session.get('user')
+        print(currentUserID)
         mylist = []
         with get_db() as conn:
             cursor = conn.cursor()
@@ -81,16 +82,18 @@ def sign_2FA():
                     query = 'UPDATE users SET secret_token = ? WHERE userID = ?'
                     cursor.execute(query, (secret, currentUserID))
                     conn.commit()
+                print(currentUserID, secret)
                 QRUrl = 'otpauth://totp/PasswordManager:{0}?secret={1}&issuer=PasswordManager'.format(currentUserID,secret)
-                temp_filename = 'myqr.png'
+                temp_filename = f'{currentUserID}.png'
+                print(temp_filename)
                 qr.add_data(QRUrl)
                 qr.make(fit=True)
                 img = qr.make_image()
                 img.save(temp_filename)
-                oldDir = os.getcwd() + '/myqr.png'
-                newDir = os.getcwd() + '/static/myqr.png'
+                oldDir = os.getcwd() + f'/{currentUserID}.png'
+                newDir = os.getcwd() + f'/static/{currentUserID}.png'
                 shutil.move(oldDir, newDir) 
-                return render_template('login_2FA.html', secret=secret)
+                return render_template('signup_2FA.html', secret=secret)
             else:
                 secret = mylist[4]
                 return render_template('login_2FA.html', secret=secret)
