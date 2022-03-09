@@ -87,8 +87,8 @@ def sign_2FA():
                 qr.make(fit=True)
                 img = qr.make_image()
                 img.save(temp_filename)
-                oldDir = os.getcwd() + '\\myqr.png'
-                newDir = os.getcwd() + '\\static\\myqr.png'
+                oldDir = os.getcwd() + '/myqr.png'
+                newDir = os.getcwd() + '/static/myqr.png'
                 shutil.move(oldDir, newDir) 
                 return render_template('login_2FA.html', secret=secret)
             else:
