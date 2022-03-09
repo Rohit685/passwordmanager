@@ -46,3 +46,8 @@ h5{
   font-style: italic;
   font-size: 13px;
 }
+
+a, a:hover{
+  color: white;
+  text-decoration-line: none;
+}
