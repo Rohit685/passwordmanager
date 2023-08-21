@@ -17,4 +17,4 @@ The formatting is not complete yet but will be improved as the website comes alo
 Thanks for looking.
 
 
-Also, if you care, this site won the 2022 Congressional App Challenge for Wisconsin's 5th district.
+Also, this site won the 2022 Congressional App Challenge for Wisconsin's 5th district.
